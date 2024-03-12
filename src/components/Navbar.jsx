@@ -5,8 +5,8 @@ import Button from "./Button";
 const Navbar = () => {
     return (
         <div className={styles.nav}>
-            <Button>Home</Button>
-            <Button>Boomer Customs</Button>
+            <Button btn={styles.btn}>Home</Button>
+            <Button btn={styles.btn}>Boomer Customs</Button>
         </div>
     );
 };

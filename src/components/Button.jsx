@@ -1,8 +1,11 @@
 import React from "react";
-import styles from "./cssfiles/Button.module.css";
 
 const Button = (props) => {
-    return <div className={styles.btn}>{props.children}</div>;
+    return (
+        <div className={props.btn} onClick={props.onClick}>
+            {props.children}
+        </div>
+    );
 };
 
 export default Button;

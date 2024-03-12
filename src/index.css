@@ -24,6 +24,12 @@
     --light-blue: #7fc9eb;
     --yellow: #ffcb70;
     --purple: #4158d0;
+    --slate-grey: rgba(57, 63, 84, 0.8);
+}
+
+@font-face {
+    font-family: "Inspiration-Regular";
+    src: url("/src/fonts/Inspiration-Regular.ttf") format("truetype");
 }
 
 * {
@@ -36,9 +42,7 @@ html {
 
 body {
     margin: 0;
-    /* display: flex;
-    justify-content: start;
-    align-items: start; */
+    color: var(--light-grey);
     width: 100%;
     height: 100%;
     background-color: var(--dark-grey);
