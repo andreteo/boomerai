@@ -39,10 +39,12 @@ function App() {
                         authorizationKey={authorizationKey}
                         gptPrompt={gptPrompt}
                         imagePrompt={imagePrompt}
-                        bearerKey={bearerKey}></Display>
+                        bearerKey={bearerKey}>
+                        Home
+                    </Display>
                 }
             />
-            <Route path="dashboard" element={<Dashboard bearerKey={bearerKey}></Dashboard>} />
+            <Route path="dashboard" element={<Dashboard bearerKey={bearerKey}>Boomer Customs</Dashboard>} />
         </Routes>
     );
 }

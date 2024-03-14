@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
-import styles from "./cssfiles/Dashboard.module.css";
+import React from "react";
+import btnStyles from "./cssfiles/ButtonsStyling.module.css";
+import tableStyles from "./cssfiles/TableStyling.module.css";
+import imageStyles from "./cssfiles/ImageStyling.module.css";
 import Button from "./Button";
 
 const Quote = (props) => {
@@ -26,11 +28,11 @@ const Quote = (props) => {
 
     return (
         <>
-            <div className={styles.quotecontainer}>
+            <div className={imageStyles.quotecontainer}>
                 {props.selectedQuote === props.message ? (
                     <button
-                        className={`${props.idx % 2 === 0 ? styles.tablerowgrey : styles.tablerowdarkgrey} ${
-                            styles.highlightselected
+                        className={`${props.idx % 2 === 0 ? tableStyles.tablerowgrey : tableStyles.tablerowdarkgrey} ${
+                            imageStyles.highlightselected
                         }`}
                         onClick={() => {
                             props.setSelectedQuote(props.message);
@@ -39,7 +41,7 @@ const Quote = (props) => {
                     </button>
                 ) : (
                     <button
-                        className={`${props.idx % 2 === 0 ? styles.tablerowgrey : styles.tablerowdarkgrey}`}
+                        className={`${props.idx % 2 === 0 ? tableStyles.tablerowgrey : tableStyles.tablerowdarkgrey}`}
                         onClick={() => {
                             props.setSelectedQuote(props.message);
                         }}>
@@ -47,9 +49,9 @@ const Quote = (props) => {
                     </button>
                 )}
 
-                <button className={`${styles.deletebtn}`} onClick={() => handleDelete()}>
+                <Button btn={`${btnStyles.deletebtn}`} onClick={() => handleDelete()}>
                     Delete
-                </button>
+                </Button>
             </div>
         </>
     );

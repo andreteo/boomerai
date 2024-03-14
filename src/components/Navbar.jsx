@@ -1,19 +1,19 @@
 import React from "react";
-import styles from "./cssfiles/Navbar.module.css";
-import Button from "./Button";
+import btnStyles from "./cssfiles/ButtonsStyling.module.css";
 
 const Navbar = () => {
     return (
-        <div className={styles.nav}>
-            <a href="/main" className={styles.btn}>
-                Home
-            </a>
-            <a href="/dashboard" className={styles.btn}>
-                Boomer Customs
-            </a>
-            {/* <Button btn={styles.btn}>Home</Button> */}
-            {/* <Button btn={styles.btn}>Boomer Customs</Button> */}
-        </div>
+        <>
+            <div className="nav">
+                <a href="/main" className={btnStyles.submitbtn}>
+                    Home
+                </a>
+                <a href="/dashboard" className={btnStyles.submitbtn}>
+                    Boomer Customs
+                </a>
+            </div>
+            <hr />
+        </>
     );
 };
 

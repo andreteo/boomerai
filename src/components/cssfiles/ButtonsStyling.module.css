@@ -1,0 +1,97 @@
+.submitbtn,
+.generatebtn,
+.deletebtn {
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.8rem;
+    border-radius: 9.5px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: var(--dark-grey);
+    color: var(--light-grey);
+    transition: background-color 0.2s ease-in-out;
+    margin-left: 10px;
+}
+
+.generatebtn {
+    font-size: 1.5rem;
+}
+
+.submitbtn:hover,
+.generatebtn:hover,
+.deletebtn:hover {
+    background-color: var(--dark-grey);
+}
+
+.submitbtn > span,
+.generatebtn > span,
+.deletebtn > span {
+    text-align: left;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    word-break: break-all;
+}
+
+.submitbtn:before {
+    content: "";
+    position: absolute;
+    background: var(--purple-gradient);
+    inset: -2px;
+    z-index: -1;
+    border-radius: 12.5px;
+    transition: all 0.2s ease 0s;
+}
+
+.submitbtn:hover:before {
+    box-shadow: var(--magenta-box-shadow);
+}
+
+.generatebtn:before {
+    content: "";
+    position: absolute;
+    background: var(--green-gradient);
+    inset: -2px;
+    z-index: -1;
+    border-radius: 12.5px;
+    transition: all 0.2s ease 0s;
+}
+
+.generatebtn:hover:before {
+    box-shadow: var(--green-box-shadow);
+}
+
+.deletebtn:before {
+    content: "";
+    position: absolute;
+    background: var(--red-gradient);
+    inset: -2px;
+    z-index: -1;
+    border-radius: 12.5px;
+    transition: all 0.2s ease 0s;
+}
+
+.deletebtn:hover:before {
+    box-shadow: var(--red-box-shadow);
+}
+
+.disabledbtn {
+    background-color: var(--dark-grey);
+    color: var(--light-grey);
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.disabledbtn:hover {
+    background-color: var(--light-grey);
+}
+
+.templatebtncontainer {
+    display: flex;
+    margin: 2rem;
+    justify-content: center;
+}

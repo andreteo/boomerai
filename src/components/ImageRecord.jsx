@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import styles from "./cssfiles/Dashboard.module.css";
+import React from "react";
 import Image from "./Image";
 import Button from "./Button";
+import buttonStyles from "./cssfiles/ButtonsStyling.module.css";
+import imageStyles from "./cssfiles/ImageStyling.module.css";
 
 const ImageRecord = (props) => {
     const requestString = "?records[]=";
@@ -27,11 +28,11 @@ const ImageRecord = (props) => {
 
     return (
         <>
-            <div className={styles.imgcontainerchild}>
+            <div className={imageStyles.imgcontainerchild}>
                 {props.selectedImage === props.url ? (
-                    <div className={styles.highlightselected}>
+                    <div className={imageStyles.highlightselected}>
                         <Button
-                            className={`${styles.imgelement}`}
+                            btn={`${imageStyles.imgelement}`}
                             onClick={() => {
                                 props.setSelectedImage(props.id);
                             }}>
@@ -41,7 +42,7 @@ const ImageRecord = (props) => {
                 ) : (
                     <div>
                         <Button
-                            className={styles.imgelement}
+                            btn={imageStyles.imgelement}
                             onClick={() => {
                                 props.setSelectedImage(props.url);
                             }}>
@@ -50,9 +51,9 @@ const ImageRecord = (props) => {
                     </div>
                 )}
 
-                <button className={`col-sm-3 ${styles.deletebtn} ${styles.imgelement}`} onClick={() => handleDelete()}>
+                <Button btn={`col-sm-3 ${buttonStyles.deletebtn}`} onClick={() => handleDelete()}>
                     Delete
-                </button>
+                </Button>
             </div>
         </>
     );

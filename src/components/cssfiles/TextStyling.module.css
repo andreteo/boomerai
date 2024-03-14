@@ -1,0 +1,112 @@
+/* General Text Styles */
+.bebas {
+    font-family: "BebasNeue-Regular", sans-serif;
+}
+
+.lgsize {
+    font-size: 4rem;
+}
+
+.glowingText {
+    color: var(--dark-grey);
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #fff, 0 0 82px #fff, 0 0 92px #fff, 0 0 102px #fff,
+        0 0 151px #fff;
+}
+
+.centeredText {
+    position: absolute;
+    font-size: 2rem;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/*  Main Page Overview */
+.overall {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.overview {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 4rem 4rem 0 4rem;
+    justify-content: center;
+    font-size: 6rem;
+    gap: 2rem;
+}
+
+.overviewimg {
+    width: 175px;
+    height: 175px;
+    border-radius: 2rem;
+    border: 1px solid var(--light-grey);
+}
+
+.overviewdesc {
+    display: flex;
+    justify-content: center;
+    color: var(--green);
+    font-size: 2.5rem;
+}
+
+/* User Input Fields */
+.user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.inp {
+    margin: 1rem;
+    font-size: 1.5rem;
+    min-width: 50%;
+    height: 3.5rem;
+}
+
+.userInput {
+    border: 1px solid var(--light-grey);
+    background-color: var(--slate-grey);
+    border-radius: 10px;
+    color: var(--light-grey);
+}
+
+/* About Page */
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: 5rem 1rem 1rem 2rem;
+}
+.aboutheader {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--green);
+}
+
+.aboutpara {
+    font-size: 1rem;
+}
+
+/* Loading Screen */
+.waviy span {
+    font-family: "Alfa Slab One", cursive;
+    position: relative;
+    display: inline-block;
+    color: var(--light-grey);
+    text-transform: uppercase;
+    animation: waviy 1s infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+@keyframes waviy {
+    0%,
+    40%,
+    100% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-20px);
+    }
+}

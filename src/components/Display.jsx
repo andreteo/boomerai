@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Button from "./Button";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Heading from "./Heading";
-import Image from "./Image";
 import UserInput from "./UserInput";
 import Overview from "./Overview";
 import About from "./About";
@@ -11,55 +9,19 @@ import Modal from "./Modal";
 
 const Display = (props) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [showImage, setShowImage] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [saveStatus, setSaveStatus] = useState(1);
     const [text, setText] = useState([]);
     const [image, setImage] = useState([]);
-    // const [records, setRecords] = useState({});
 
-    const getTextRecords = async (signal) => {
-        try {
-            const res = await fetch(import.meta.env.VITE_AIRTABLE_CHAT_TABLE_ENDPOINT, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${props.bearerKey}`,
-                },
-                signal: signal,
-            });
-
-            if (!res.ok) {
-                throw new Error("Failed to fetch data");
-            }
-
-            const data = await res.json();
-            // setRecords(data);
-        } catch (error) {
-            if (error.name === "AbortError") {
-                console.log("Request aborted");
-            } else {
-                console.error("Error fetching data:", error);
-            }
-        }
-    };
-
-    useEffect(() => {
-        const controller = new AbortController();
-        const signal = controller.signal;
-
-        getTextRecords(signal);
-
-        return () => {
-            controller.abort();
-        };
-    }, []);
-
-    const generateText = async (inp) => {
+    const generateBoomerContent = async (input) => {
         setIsLoading(true);
-        props.gptPrompt.messages[0].content += inp;
+        setShowModal(false);
+
+        props.gptPrompt.messages[0].content += input;
+
         try {
-            const res = await fetch(props.chatEndpoint, {
+            const textRes = await fetch(props.chatEndpoint, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -67,20 +29,17 @@ const Display = (props) => {
                 },
                 body: JSON.stringify(props.gptPrompt),
             });
-            const resData = await res.json(inp);
-            setText(resData);
+            const textData = await textRes.json();
+            setText(textData);
             console.log("FETCH TEXT SUCCESS");
         } catch (error) {
             console.error("Error generating text:", error);
         }
-    };
 
-    const generateImage = async (inp) => {
-        setShowModal(false);
-        setIsLoading(true);
-        props.imagePrompt.prompt += inp;
+        props.imagePrompt.prompt += input;
+
         try {
-            const res = await fetch(props.imageEndpoint, {
+            const imageRes = await fetch(props.imageEndpoint, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -88,29 +47,27 @@ const Display = (props) => {
                 },
                 body: JSON.stringify(props.imagePrompt),
             });
-            const resData = await res.json();
-            setImage(resData);
+            const imageData = await imageRes.json();
+            setImage(imageData);
             console.log("FETCH IMAGE SUCCESS");
         } catch (error) {
-            console.error("Error generating text:", error);
+            console.error("Error generating image:", error);
         }
+
         setIsLoading(false);
         setShowModal(true);
     };
 
     return (
         <>
-            <Heading>Home</Heading>
-            <hr />
+            <Heading>{props.children}</Heading>
             <Navbar />
-            <hr />
 
             <div className="container">
                 <Overview></Overview>
-                {showImage ? <Image url={testurl}>{testprompt}</Image> : <div></div>}
-                <UserInput generateText={generateText} generateImage={generateImage}>
-                    {"How are you feeling? ..."}
-                </UserInput>
+
+                <UserInput generateBoomerContent={generateBoomerContent}>{"How are you feeling? ..."}</UserInput>
+
                 <About></About>
 
                 {isLoading && (
@@ -136,10 +93,6 @@ const Display = (props) => {
                         </Modal>
                     </div>
                 )}
-
-                {/* <Image url={testurl}>{testprompt}</Image> */}
-                {/* <h2>{JSON.stringify(text.choices)}</h2> */}
-                {/* <h2>{JSON.stringify(image.data)}</h2> */}
             </div>
         </>
     );

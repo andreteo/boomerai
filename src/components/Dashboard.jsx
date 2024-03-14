@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import Heading from "./Heading";
 import Navbar from "./Navbar";
 import Loading from "./Loading";
-import styles from "./cssfiles/Dashboard.module.css";
 import Quote from "./Quote";
 import Button from "./Button";
 import ImageRecord from "./ImageRecord";
-import { json } from "react-router-dom";
 import DashboardModal from "./DashboardModal";
+import btnStyles from "./cssfiles/ButtonsStyling.module.css";
+import tableStyles from "./cssfiles/TableStyling.module.css";
+import imageStyles from "./cssfiles/ImageStyling.module.css";
 
 const Dashboard = (props) => {
     const [records, setRecords] = useState(null);
@@ -63,12 +64,7 @@ const Dashboard = (props) => {
             }
 
             const data = await res.json();
-
             setImgRecords(data);
-            // const removedDupes = removeDupes(data);
-            // setRecords({
-            //     records: removedDupes,
-            // });
         } catch (error) {
             if (error.name === "AbortError") {
                 console.log("Request aborted");
@@ -114,11 +110,7 @@ const Dashboard = (props) => {
         return () => {
             controller.abort();
         };
-    }, [
-        function mapDispatchToProps(dispatch) {
-            return {};
-        },
-    ]);
+    }, []);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -137,15 +129,14 @@ const Dashboard = (props) => {
 
     return (
         <>
-            <Heading>Home</Heading>
-            <hr />
+            <Heading>{props.children}</Heading>
+
             <Navbar />
-            <hr />
-            <br></br>
+
             {displayModal && (
-                <div className="container">
+                <div className={btnStyles.templatebtncontainer}>
                     <Button
-                        btn={`${styles.submitbtn}`}
+                        btn={`${btnStyles.generatebtn} col-sm-4`}
                         onClick={() => {
                             handleGenerateFromTemplate();
                         }}>
@@ -163,11 +154,10 @@ const Dashboard = (props) => {
 
             {imgRecords ? (
                 <div className="container">
-                    <div className={styles.tableheader}>Images</div>
-
-                    <div className={styles.imgcontainer}>
+                    <div className={tableStyles.tableheader}>Images</div>
+                    <div className={imageStyles.imgcontainer}>
                         {imgRecords.records.map((imgRecord, idx) => (
-                            <>
+                            <div key={idx}>
                                 <ImageRecord
                                     key={idx}
                                     idx={idx}
@@ -179,7 +169,7 @@ const Dashboard = (props) => {
                                     setSelectedImage={setSelectedImage}>
                                     {imgRecord.fields.image}
                                 </ImageRecord>
-                            </>
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -191,7 +181,7 @@ const Dashboard = (props) => {
 
             {records ? (
                 <div className="container">
-                    <div className={styles.tableheader}>Quotes</div>
+                    <div className={tableStyles.tableheader}>Quotes</div>
 
                     {records.records.map((record, idx) => (
                         <>

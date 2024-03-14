@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import styles from "./cssfiles/Modal.module.css";
 import Image from "./Image";
 import Button from "./Button";
+import modalStyles from "./cssfiles/ModalStyling.module.css";
+import btnStyles from "./cssfiles/ButtonsStyling.module.css";
 
 const ModalOverlay = (props) => {
     return (
         <>
-            <div className={`${styles.backdrop}`}>
-                <div className={`${styles.board} ${styles.modal}`}>
+            <div className={`${modalStyles.backdrop}`}>
+                <div className={`${modalStyles.board} ${modalStyles.modal}`}>
                     <>
-                        <header className={styles.header}>
+                        <header className={modalStyles.header}>
                             <h2>Template Generated</h2>
                         </header>
                         <Image url={props.image}>{props.children}</Image>
                     </>
                     <Button
-                        btn={`col-sm-3 ${styles.deletebtn}`}
+                        btn={`col-sm-3 ${btnStyles.deletebtn}`}
                         onClick={() => {
                             props.setShowModal(false);
                         }}>

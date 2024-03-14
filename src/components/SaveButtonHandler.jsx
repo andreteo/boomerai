@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./cssfiles/SaveButtonHandler.module.css";
+import btnStyles from "./cssfiles/ButtonsStyling.module.css";
 import Button from "./Button";
 
 const SaveButtonHandler = (props) => {
@@ -113,9 +113,9 @@ const SaveButtonHandler = (props) => {
                 <>
                     <div className="col-sm-3">
                         {props.quoteBtnSaved ? (
-                            <Button btn={`${styles.disabledbtn}`}>Save Text</Button>
+                            <Button btn={`${btnStyles.submitbtn} ${btnStyles.disabledbtn}`}>Save Text</Button>
                         ) : (
-                            <Button btn={styles.submitbtn} onClick={handleSaveText}>
+                            <Button btn={btnStyles.submitbtn} onClick={handleSaveText}>
                                 Save Text
                             </Button>
                         )}
@@ -123,9 +123,9 @@ const SaveButtonHandler = (props) => {
 
                     <div className="col-sm-3">
                         {props.imageBtnSaved ? (
-                            <Button btn={`${styles.disabledbtn}`}>Save Image</Button>
+                            <Button btn={`${btnStyles.submitbtn} ${btnStyles.disabledbtn}`}>Save Image</Button>
                         ) : (
-                            <Button btn={styles.submitbtn} onClick={handleSaveImage}>
+                            <Button btn={btnStyles.submitbtn} onClick={handleSaveImage}>
                                 Save Image
                             </Button>
                         )}
@@ -133,9 +133,9 @@ const SaveButtonHandler = (props) => {
 
                     <div className="col-sm-3">
                         {props.bothBtnSaved ? (
-                            <Button btn={`${styles.disabledbtn}`}>Save Quote</Button>
+                            <Button btn={`${btnStyles.submitbtn}  ${btnStyles.disabledbtn}`}>Save Quote</Button>
                         ) : (
-                            <Button btn={styles.submitbtn} onClick={handleSaveQuote}>
+                            <Button btn={btnStyles.submitbtn} onClick={handleSaveQuote}>
                                 Save Quote
                             </Button>
                         )}
@@ -143,9 +143,11 @@ const SaveButtonHandler = (props) => {
 
                     <div className="col-sm-3">
                         <Button
-                            btn={styles.submitbtn}
+                            btn={btnStyles.submitbtn}
                             onClick={() => {
                                 props.setShowModal(false);
+                                props.setIsLoading(false);
+                                props.setSaveStatus(1);
                             }}>
                             Cancel
                         </Button>

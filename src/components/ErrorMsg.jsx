@@ -1,22 +1,23 @@
 import React from "react";
-import styles from "./cssfiles/Modal.module.css";
+import modalStyles from "./cssfiles/ModalStyling.module.css";
+import textStyles from "./cssfiles/TextStyling.module.css";
 
 const ErrorMsg = (props) => {
     return (
         <>
             {props.saveSuccess ? (
                 <div>
-                    <header className={styles.header}>
+                    <header className={modalStyles.header}>
                         <h2>Save Success!</h2>
                     </header>
-                    <div className={`${styles.placeholder} ${styles.textglow}`}>{props.children} Saved</div>
+                    <div className={`${modalStyles.placeholder} ${textStyles.glowingText}`}>{props.children} Saved</div>
                 </div>
             ) : (
                 <>
-                    <header className={styles.header}>
+                    <header className={modalStyles.header}>
                         <h2>{props.children} Save Unsuccessful.</h2>
                     </header>
-                    <div className={`${styles.placeholder} ${styles.textglow} ${styles.textcentered}`}>
+                    <div className={`${modalStyles.placeholder} ${textStyles.glowingText} ${modalStyles.centeredText}`}>
                         {props.children} NOT Saved
                     </div>
                 </>

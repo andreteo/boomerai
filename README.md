@@ -65,8 +65,9 @@
 
 # References
 
-| Desc.                       | URL                                                              |
-| --------------------------- | ---------------------------------------------------------------- |
-| Phone Screen Size Reference | [Link](https://28b.co.uk/ios-device-dimensions-reference-table/) |
+| Desc.             | URL                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Loading Animation | [Link](https://alvarotrigo.com/blog/css-text-animations/)          |
+| Boomer Gif        | [Link](https://giphy.com/gifs/fail-camera-oops-3owypf6HrM3J7UTvAA) |
 
 # Next Steps
