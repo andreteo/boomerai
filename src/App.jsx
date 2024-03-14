@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Display from "./components/Display";
 import { Navigate, Route, Routes } from "react-router-dom";
+import Dashboard from "./components/Dashboard";
 
 function App() {
     const chatEndpoint = import.meta.env.VITE_OPENAI_CHAT_ENDPOINT;
@@ -24,6 +25,7 @@ function App() {
         model: "dall-e-3",
         prompt: "generate an inspirational image, NO TEXT, for someone who feels ",
         size: "1024x1024",
+        // response_format: "b64_json",
     };
 
     return (
@@ -41,6 +43,7 @@ function App() {
                         bearerKey={bearerKey}></Display>
                 }
             />
+            <Route path="dashboard" element={<Dashboard bearerKey={bearerKey}></Dashboard>} />
         </Routes>
     );
 }

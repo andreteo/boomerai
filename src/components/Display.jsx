@@ -13,9 +13,10 @@ const Display = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [showImage, setShowImage] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [saveStatus, setSaveStatus] = useState(1);
     const [text, setText] = useState([]);
     const [image, setImage] = useState([]);
-    const [records, setRecords] = useState({});
+    // const [records, setRecords] = useState({});
 
     const getTextRecords = async (signal) => {
         try {
@@ -33,8 +34,7 @@ const Display = (props) => {
             }
 
             const data = await res.json();
-            // console.log(JSON.stringify(data));
-            setRecords(data);
+            // setRecords(data);
         } catch (error) {
             if (error.name === "AbortError") {
                 console.log("Request aborted");
@@ -118,18 +118,23 @@ const Display = (props) => {
 
                 {isLoading && (
                     <div className="centered">
-                        <Loading>Loading bro.</Loading>
+                        <Loading>Loading..</Loading>
                     </div>
                 )}
 
-                {!isLoading && showModal && (
+                {showModal && (
                     <div className="centered">
                         <Modal
                             url={image.data[0].url}
                             prompt={text.choices[0]["message"].content}
                             textresponse={text}
                             imageresponse={image}
-                            bearerKey={props.bearerKey}>
+                            bearerKey={props.bearerKey}
+                            setShowModal={setShowModal}
+                            setIsLoading={setIsLoading}
+                            isLoading={isLoading}
+                            saveStatus={saveStatus}
+                            setSaveStatus={setSaveStatus}>
                             Quote Generated!
                         </Modal>
                         {/* {console.log(text.choices[0]["message"].content)} */}
@@ -137,8 +142,8 @@ const Display = (props) => {
                 )}
 
                 {/* <Image url={testurl}>{testprompt}</Image> */}
-                <h2>{JSON.stringify(text.choices)}</h2>
-                <h2>{JSON.stringify(image.data)}</h2>
+                {/* <h2>{JSON.stringify(text.choices)}</h2> */}
+                {/* <h2>{JSON.stringify(image.data)}</h2> */}
             </div>
         </>
     );
