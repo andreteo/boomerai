@@ -25,7 +25,6 @@ function App() {
         model: "dall-e-3",
         prompt: "generate an inspirational image, NO TEXT, for someone who feels ",
         size: "1024x1024",
-        // response_format: "b64_json",
     };
 
     return (

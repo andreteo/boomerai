@@ -61,45 +61,41 @@ const SaveButtonHandler = (props) => {
         props.setIsLoading(true);
         props.setSaveStatus(3);
 
-        const substrings = splitImgString(props.imgSrc, 76);
-        console.log(substrings);
-        console.log(substrings.length);
+        try {
+            const saveImageRequest = {
+                records: [
+                    {
+                        fields: {
+                            image: props.url,
+                            date: String(props.imageresponse.created),
+                        },
+                    },
+                ],
+            };
 
-        // try {
-        //     const saveImageRequest = {
-        //         records: [
-        //             {
-        //                 fields: {
-        //                     image: props.imgSrc,
-        //                     date: props.imageresponse.created,
-        //                 },
-        //             },
-        //         ],
-        //     };
+            const res = await fetch(import.meta.env.VITE_AIRTABLE_IMAGE_TABLE_ENDPOINT, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${props.bearerKey}`,
+                },
+                body: JSON.stringify(saveImageRequest),
+            });
 
-        //     const res = await fetch(import.meta.env.VITE_AIRTABLE_IMAGE_TABLE_ENDPOINT, {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             Authorization: `Bearer ${props.bearerKey}`,
-        //         },
-        //         body: JSON.stringify(saveImageRequest),
-        //     });
-
-        //     if (res.ok) {
-        //         const data = await res.json();
-        //         // props.setSaveSuccess(true);
-        //         console.log("Save Image Success");
-        //     } else {
-        //         // props.setSaveStatus(false);
-        //         console.log("Save Image Failed");
-        //     }
-        // } catch (error) {
-        //     // props.setSaveStatus(false);
-        //     console.error("Error Saving Image:", error);
-        // } finally {
-        //     props.setIsLoading(false);
-        // }
+            if (res.ok) {
+                const data = await res.json();
+                props.setSaveSuccess(true);
+                console.log("Save Image Success");
+            } else {
+                props.setSaveStatus(false);
+                console.log("Save Image Failed");
+            }
+        } catch (error) {
+            props.setSaveStatus(false);
+            console.error("Error Saving Image:", error);
+        } finally {
+            props.setIsLoading(false);
+        }
     };
 
     return (

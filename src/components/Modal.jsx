@@ -6,16 +6,16 @@ import SaveButtonHandler from "./SaveButtonHandler";
 
 const ModalOverlay = (props) => {
     const [saveSuccess, setSaveSuccess] = useState(false);
-    const [base64Data, setBase64Data] = useState("");
-    const [imgSrc, setImgSrc] = useState("");
+    // const [base64Data, setBase64Data] = useState("");
+    // const [imgSrc, setImgSrc] = useState("");
 
-    useEffect(() => {
-        if (props.imageresponse?.data[0]?.b64_json) {
-            const dataUrl = `data:image/png;base64,${props.imageresponse?.data[0]?.b64_json}`;
-            setImgSrc(dataUrl);
-            setBase64Data(`${props.imageresponse?.data[0]?.b64_json}`);
-        }
-    }, [props.imageresponse]);
+    // useEffect(() => {
+    //     if (props.imageresponse?.data[0]?.b64_json) {
+    //         const dataUrl = `data:image/png;base64,${props.imageresponse?.data[0]?.b64_json}`;
+    //         setImgSrc(dataUrl);
+    //         setBase64Data(`${props.imageresponse?.data[0]?.b64_json}`);
+    //     }
+    // }, [props.imageresponse]);
 
     return (
         <>
@@ -61,15 +61,15 @@ const ModalOverlay = (props) => {
                             <header className={styles.header}>
                                 <h2>{props.children}</h2>
                             </header>
-                            {/* <Image url={props.url}>{props.prompt}</Image> */}
-                            <Image imgSrc={imgSrc}>{props.prompt}</Image>
+                            <Image url={props.url}>{props.prompt}</Image>
+                            {/* <Image imgSrc={imgSrc}>{props.prompt}</Image> */}
                         </>
                     )}
 
                     <SaveButtonHandler
                         textresponse={props.textresponse}
                         imageresponse={props.imageresponse}
-                        imgSrc={base64Data}
+                        url={props.url}
                         bearerKey={props.bearerKey}
                         setShowModal={props.setShowModal}
                         setIsLoading={props.setIsLoading}

@@ -137,7 +137,6 @@ const Display = (props) => {
                             setSaveStatus={setSaveStatus}>
                             Quote Generated!
                         </Modal>
-                        {/* {console.log(text.choices[0]["message"].content)} */}
                     </div>
                 )}
 
