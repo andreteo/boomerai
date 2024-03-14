@@ -2,18 +2,6 @@ import React, { useState, useEffect } from "react";
 import styles from "./cssfiles/SaveButtonHandler.module.css";
 import Button from "./Button";
 
-const splitImgString = (s, size) => {
-    const ss = [];
-    while (s.length > 0) {
-        if (s.length < size) {
-            size = s.length;
-        }
-        ss.push(s.substring(0, size));
-        s = s.substring(size);
-    }
-    return ss;
-};
-
 const SaveButtonHandler = (props) => {
     const handleSaveText = async () => {
         props.setIsLoading(true);

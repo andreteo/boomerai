@@ -3,58 +3,17 @@ import ReactDOM from "react-dom";
 import styles from "./cssfiles/Modal.module.css";
 import Image from "./Image";
 import SaveButtonHandler from "./SaveButtonHandler";
+import ErrorMsg from "./ErrorMsg";
 
 const ModalOverlay = (props) => {
     const [saveSuccess, setSaveSuccess] = useState(false);
-    // const [base64Data, setBase64Data] = useState("");
-    // const [imgSrc, setImgSrc] = useState("");
-
-    // useEffect(() => {
-    //     if (props.imageresponse?.data[0]?.b64_json) {
-    //         const dataUrl = `data:image/png;base64,${props.imageresponse?.data[0]?.b64_json}`;
-    //         setImgSrc(dataUrl);
-    //         setBase64Data(`${props.imageresponse?.data[0]?.b64_json}`);
-    //     }
-    // }, [props.imageresponse]);
 
     return (
         <>
-            {/* {props.isLoading && (
-                <div className="centered">
-                    <Loading></Loading>
-                </div>
-            )} */}
-
             <div className={`${styles.backdrop}`}>
                 <div className={`${styles.board} ${styles.modal}`}>
-                    {props.saveStatus === 2 && (
-                        <>
-                            {saveSuccess ? (
-                                <div>
-                                    <header className={styles.header}>
-                                        <h2>Save Success!</h2>
-                                    </header>
-                                    <div className={`${styles.placeholder} ${styles.textglow}`}>Quote Saved</div>
-                                </div>
-                            ) : (
-                                <>
-                                    <header className={styles.header}>
-                                        <h2>Save Unsuccessful.</h2>
-                                    </header>
-                                    <div className={`${styles.placeholder} ${styles.textglow} ${styles.textcentered}`}>
-                                        Quote NOT Saved
-                                    </div>
-                                    <h1>{`SaveStatus ${props.saveStatus}, SaveSuccess ${saveSuccess}`}</h1>
-                                </>
-                            )}
-                        </>
-                    )}
-
-                    {props.saveStatus === 3 && (
-                        <>
-                            <div>TEST</div>
-                        </>
-                    )}
+                    {props.saveStatus === 2 && <ErrorMsg saveSuccess={saveSuccess}>Text</ErrorMsg>}
+                    {props.saveStatus === 3 && <ErrorMsg saveSuccess={saveSuccess}>Image</ErrorMsg>}
 
                     {props.saveStatus === 1 && (
                         <>
@@ -62,7 +21,6 @@ const ModalOverlay = (props) => {
                                 <h2>{props.children}</h2>
                             </header>
                             <Image url={props.url}>{props.prompt}</Image>
-                            {/* <Image imgSrc={imgSrc}>{props.prompt}</Image> */}
                         </>
                     )}
 

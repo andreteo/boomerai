@@ -98,9 +98,6 @@ const Display = (props) => {
         setShowModal(true);
     };
 
-    // const testurl = `https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.marketing-interactive.com%2Fsg-ministry-uses-boomer-friendly-good-morning-posts-to-dish-out-sustainability-tips&psig=AOvVaw1P6RGEpDrWZyjPUxFwpD_Z&ust=1710315624232000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCLDouKuc7oQDFQAAAAAdAAAAABAI`;
-    // const testprompt = "Remember, storms make trees take deeper roots. You are stronger than you";
-
     return (
         <>
             <Heading>Home</Heading>
