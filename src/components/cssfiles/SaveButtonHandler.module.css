@@ -37,3 +37,16 @@
     -webkit-line-clamp: 1;
     word-break: break-all;
 }
+
+.disabledbtn {
+    line-height: 1.8rem;
+    border-radius: 9.5px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    position: relative;
+    background-color: var(--dark-grey);
+    color: var(--light-grey);
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}

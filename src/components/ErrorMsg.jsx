@@ -19,7 +19,6 @@ const ErrorMsg = (props) => {
                     <div className={`${styles.placeholder} ${styles.textglow} ${styles.textcentered}`}>
                         {props.children} NOT Saved
                     </div>
-                    <h1>{`SaveStatus ${props.saveStatus}, SaveSuccess ${saveSuccess}`}</h1>
                 </>
             )}
         </>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./cssfiles/Dashboard.module.css";
+import Button from "./Button";
 
 const Quote = (props) => {
     const requestString = "?records[]=";
@@ -24,14 +25,33 @@ const Quote = (props) => {
     };
 
     return (
-        <div className="row">
-            <div className={`col-sm-9 ${props.idx % 2 === 0 ? styles.tablerowgrey : styles.tablerowdarkgrey}`}>
-                {props.children}
+        <>
+            <div className={styles.quotecontainer}>
+                {props.selectedQuote === props.message ? (
+                    <button
+                        className={`${props.idx % 2 === 0 ? styles.tablerowgrey : styles.tablerowdarkgrey} ${
+                            styles.highlightselected
+                        }`}
+                        onClick={() => {
+                            props.setSelectedQuote(props.message);
+                        }}>
+                        {props.children}
+                    </button>
+                ) : (
+                    <button
+                        className={`${props.idx % 2 === 0 ? styles.tablerowgrey : styles.tablerowdarkgrey}`}
+                        onClick={() => {
+                            props.setSelectedQuote(props.message);
+                        }}>
+                        {props.children}
+                    </button>
+                )}
+
+                <button className={`${styles.deletebtn}`} onClick={() => handleDelete()}>
+                    Delete
+                </button>
             </div>
-            <button className={`col-sm-2 ${styles.deletebtn}`} onClick={() => handleDelete()}>
-                Delete
-            </button>
-        </div>
+        </>
     );
 };
 

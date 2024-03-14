@@ -32,13 +32,16 @@ const SaveButtonHandler = (props) => {
             if (res.ok) {
                 const data = await res.json();
                 props.setSaveSuccess(true);
+                props.setQuoteBtnSaved(true);
                 console.log("Save Quote Success");
             } else {
                 props.setSaveStatus(false);
+                props.setQuoteBtnSaved(false);
                 console.log("Save Quote Failed");
             }
         } catch (error) {
             props.setSaveStatus(false);
+            props.setQuoteBtnSaved(false);
             console.error("Error saving quote:", error);
         } finally {
             props.setIsLoading(false);
@@ -73,16 +76,34 @@ const SaveButtonHandler = (props) => {
             if (res.ok) {
                 const data = await res.json();
                 props.setSaveSuccess(true);
+                props.setImageBtnSaved(true);
                 console.log("Save Image Success");
             } else {
-                props.setSaveStatus(false);
+                props.setSaveSuccess(false);
+                props.setImageBtnSaved(false);
                 console.log("Save Image Failed");
             }
         } catch (error) {
-            props.setSaveStatus(false);
+            props.setSaveSuccess(false);
+            props.setImageBtnSaved(false);
             console.error("Error Saving Image:", error);
         } finally {
             props.setIsLoading(false);
+        }
+    };
+
+    const handleSaveQuote = async () => {
+        try {
+            await handleSaveText();
+            await handleSaveImage();
+        } catch (error) {
+            props.setSaveSuccess(false);
+            props.setBothButtonSaved(false);
+            console.error("Error saving quote:", error);
+        } finally {
+            props.setSaveStatus(4);
+            props.setSaveSuccess(true);
+            props.setBothBtnSaved(true);
         }
     };
 
@@ -91,18 +112,35 @@ const SaveButtonHandler = (props) => {
             <div className="row">
                 <>
                     <div className="col-sm-3">
-                        <Button btn={styles.submitbtn} onClick={handleSaveText}>
-                            Save Text
-                        </Button>
+                        {props.quoteBtnSaved ? (
+                            <Button btn={`${styles.disabledbtn}`}>Save Text</Button>
+                        ) : (
+                            <Button btn={styles.submitbtn} onClick={handleSaveText}>
+                                Save Text
+                            </Button>
+                        )}
                     </div>
+
                     <div className="col-sm-3">
-                        <Button btn={styles.submitbtn} onClick={handleSaveImage}>
-                            Save Image
-                        </Button>
+                        {props.imageBtnSaved ? (
+                            <Button btn={`${styles.disabledbtn}`}>Save Image</Button>
+                        ) : (
+                            <Button btn={styles.submitbtn} onClick={handleSaveImage}>
+                                Save Image
+                            </Button>
+                        )}
                     </div>
+
                     <div className="col-sm-3">
-                        <Button btn={styles.submitbtn}>Save Quote</Button>
+                        {props.bothBtnSaved ? (
+                            <Button btn={`${styles.disabledbtn}`}>Save Quote</Button>
+                        ) : (
+                            <Button btn={styles.submitbtn} onClick={handleSaveQuote}>
+                                Save Quote
+                            </Button>
+                        )}
                     </div>
+
                     <div className="col-sm-3">
                         <Button
                             btn={styles.submitbtn}

@@ -7,14 +7,14 @@ import ErrorMsg from "./ErrorMsg";
 
 const ModalOverlay = (props) => {
     const [saveSuccess, setSaveSuccess] = useState(false);
+    const [quoteBtnSaved, setQuoteBtnSaved] = useState(false);
+    const [imageBtnSaved, setImageBtnSaved] = useState(false);
+    const [bothBtnSaved, setBothBtnSaved] = useState(false);
 
     return (
         <>
             <div className={`${styles.backdrop}`}>
                 <div className={`${styles.board} ${styles.modal}`}>
-                    {props.saveStatus === 2 && <ErrorMsg saveSuccess={saveSuccess}>Text</ErrorMsg>}
-                    {props.saveStatus === 3 && <ErrorMsg saveSuccess={saveSuccess}>Image</ErrorMsg>}
-
                     {props.saveStatus === 1 && (
                         <>
                             <header className={styles.header}>
@@ -23,6 +23,9 @@ const ModalOverlay = (props) => {
                             <Image url={props.url}>{props.prompt}</Image>
                         </>
                     )}
+                    {props.saveStatus === 2 && <ErrorMsg saveSuccess={saveSuccess}>Text</ErrorMsg>}
+                    {props.saveStatus === 3 && <ErrorMsg saveSuccess={saveSuccess}>Image</ErrorMsg>}
+                    {props.saveStatus === 4 && <ErrorMsg saveSuccess={saveSuccess}>Both</ErrorMsg>}
 
                     <SaveButtonHandler
                         textresponse={props.textresponse}
@@ -34,7 +37,13 @@ const ModalOverlay = (props) => {
                         saveStatus={props.saveStatus}
                         setSaveStatus={props.setSaveStatus}
                         saveSuccess={saveSuccess}
-                        setSaveSuccess={setSaveSuccess}>
+                        setSaveSuccess={setSaveSuccess}
+                        quoteBtnSaved={quoteBtnSaved}
+                        setQuoteBtnSaved={setQuoteBtnSaved}
+                        imageBtnSaved={imageBtnSaved}
+                        setImageBtnSaved={setImageBtnSaved}
+                        bothBtnSaved={bothBtnSaved}
+                        setBothBtnSaved={setBothBtnSaved}>
                         {props.prompt}
                     </SaveButtonHandler>
                 </div>
