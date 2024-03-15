@@ -16,6 +16,8 @@
     --spacing2x: calc(var(--spacing) * 2);
     --spacing2-: calc(var(--spacing) / 2);
     --radius: 1.5rem;
+    --frosted-grey: rgba(31, 31, 31, 0.25);
+    --frosted-white: rgba(255, 255, 255, 0.75);
     --green: #19a974;
     --dark-grey: #111111;
     --off-white: #333;

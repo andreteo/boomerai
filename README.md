@@ -65,9 +65,11 @@
 
 # References
 
-| Desc.             | URL                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| Loading Animation | [Link](https://alvarotrigo.com/blog/css-text-animations/)          |
-| Boomer Gif        | [Link](https://giphy.com/gifs/fail-camera-oops-3owypf6HrM3J7UTvAA) |
+| Desc.                | URL                                                                |
+| -------------------- | ------------------------------------------------------------------ |
+| Loading Animation    | [Link](https://alvarotrigo.com/blog/css-text-animations/)          |
+| Boomer Gif           | [Link](https://giphy.com/gifs/fail-camera-oops-3owypf6HrM3J7UTvAA) |
+| Hex-to-RGB Converter | https://www.rapidtables.com/convert/color/hex-to-rgb.html          |
+| CSS Gradient Finder  | https://cssgradient.io/gradient-backgrounds/                       |
 
 # Next Steps

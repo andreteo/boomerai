@@ -5,7 +5,9 @@ const Image = (props) => {
     return (
         <div className={imageStyles.imgContainer}>
             <img className={imageStyles.image} src={props.url} alt="Image Container"></img>
-            <div className={`${textStyles.centeredText} ${textStyles.glowingText}`}>{props.children}</div>
+            <div className={`${textStyles.inspirationalQuote} ${textStyles.centeredText} ${textStyles.glowingText}`}>
+                {props.children}
+            </div>
         </div>
     );
 };

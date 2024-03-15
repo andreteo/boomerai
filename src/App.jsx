@@ -10,20 +10,25 @@ function App() {
     const bearerKey = import.meta.env.VITE_AIRTABLE_API_KEY;
 
     const gptPrompt = {
-        model: "gpt-3.5-turbo",
+        model: "gpt-4",
         messages: [
             {
                 role: "user",
-                content: "generate a short string of text for an inspirational image for someone who feels ",
+                content: "Generate an inspirational message for someone who is feeling ",
+            },
+            {
+                role: "assistant",
+                content:
+                    "Remember to keep it positive and empathetic. Your message can provide comfort and encouragement. End your sentence properly, with a punctuation. It needs to make sense. You don't have to use the full token limit if needs be.",
             },
         ],
         temperature: 0.7,
-        max_tokens: 16,
+        max_tokens: 32, // Adjust token count as needed
     };
 
     const imagePrompt = {
         model: "dall-e-3",
-        prompt: "generate an inspirational image, NO TEXT, for someone who feels ",
+        prompt: "Generate an inspirational image, without any text, for someone who is feeling ",
         size: "1024x1024",
     };
 

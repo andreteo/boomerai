@@ -1,6 +1,7 @@
 import React from "react";
 import modalStyles from "./cssfiles/ModalStyling.module.css";
 import textStyles from "./cssfiles/TextStyling.module.css";
+import imageStyles from "./cssfiles/ImageStyling.module.css";
 
 const ErrorMsg = (props) => {
     return (

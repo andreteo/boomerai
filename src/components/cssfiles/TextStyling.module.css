@@ -10,7 +10,7 @@
 .glowingText {
     color: var(--dark-grey);
     text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #fff, 0 0 82px #fff, 0 0 92px #fff, 0 0 102px #fff,
-        0 0 151px #fff;
+        0 0 151px hsl(0, 0%, 100%);
 }
 
 .centeredText {
@@ -19,6 +19,11 @@
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.inspirationalQuote {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 /*  Main Page Overview */
