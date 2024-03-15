@@ -14,6 +14,7 @@
 }
 
 .centeredText {
+    margin: 1rem;
     position: absolute;
     font-size: 2rem;
     top: 10%;

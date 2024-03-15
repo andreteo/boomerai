@@ -23,7 +23,7 @@ function App() {
             },
         ],
         temperature: 0.7,
-        max_tokens: 32, // Adjust token count as needed
+        max_tokens: 24, // Adjust token count as needed
     };
 
     const imagePrompt = {

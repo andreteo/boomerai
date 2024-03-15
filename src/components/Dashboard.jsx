@@ -9,6 +9,7 @@ import DashboardModal from "./DashboardModal";
 import btnStyles from "./cssfiles/ButtonsStyling.module.css";
 import tableStyles from "./cssfiles/TableStyling.module.css";
 import imageStyles from "./cssfiles/ImageStyling.module.css";
+import textStyles from "./cssfiles/TextStyling.module.css";
 
 const Dashboard = (props) => {
     const [records, setRecords] = useState(null);
@@ -130,9 +131,7 @@ const Dashboard = (props) => {
     return (
         <>
             <Heading>{props.children}</Heading>
-
             <Navbar />
-
             {displayModal && (
                 <div className={btnStyles.templatebtncontainer}>
                     <Button
@@ -144,14 +143,12 @@ const Dashboard = (props) => {
                     </Button>
                 </div>
             )}
-
             {displayDash && (
                 <DashboardModal url={selectedImage} setShowModal={setDisplayDash}>
                     {selectedQuote}
                 </DashboardModal>
             )}
             <br></br>
-
             {imgRecords ? (
                 <div className="container">
                     <div className={tableStyles.tableheader}>Images</div>
@@ -176,9 +173,7 @@ const Dashboard = (props) => {
             ) : (
                 <Loading></Loading>
             )}
-
             <br></br>
-
             {records ? (
                 <div className="container">
                     <div className={tableStyles.tableheader}>Quotes</div>
