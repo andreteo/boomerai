@@ -36,7 +36,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Navigate replace to="/main" />} />
             <Route
-                path="main"
+                path="/main"
                 element={
                     <Display
                         chatEndpoint={chatEndpoint}
@@ -49,7 +49,7 @@ function App() {
                     </Display>
                 }
             />
-            <Route path="dashboard" element={<Dashboard bearerKey={bearerKey}>Boomer Customs</Dashboard>} />
+            <Route path="/dashboard" element={<Dashboard bearerKey={bearerKey}>Boomer Customs</Dashboard>} />
         </Routes>
     );
 }
