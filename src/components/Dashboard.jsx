@@ -132,6 +132,10 @@ const Dashboard = (props) => {
         <>
             <Heading>{props.children}</Heading>
             <Navbar />
+            <div className={textStyles.note}>
+                💡 To generate a custom image, choose your favourite image and text and click "Generate From Template"{" "}
+            </div>
+            <div className={textStyles.note}>💡 OpenAI's generated images have a 1-hour timeout.</div>
             {displayModal && (
                 <div className={btnStyles.templatebtncontainer}>
                     <Button

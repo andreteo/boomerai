@@ -7,6 +7,13 @@
     font-size: 4rem;
 }
 
+.note {
+    font-size: 1.5rem;
+    color: var(--yellow);
+    text-align: start;
+    margin: 2rem;
+}
+
 .glowingText {
     color: var(--dark-grey);
     text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #fff, 0 0 82px #fff, 0 0 92px #fff, 0 0 102px #fff,
