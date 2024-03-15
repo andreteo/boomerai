@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import imageStyles from "./cssfiles/ImageStyling.module.css";
 import textStyles from "./cssfiles/TextStyling.module.css";
+import boomergif from "../media/boomer-gif.gif";
 
 const Overlay = (props) => {
     const text = ["L", "O", "A", "D", "I", "N", "G"];
@@ -18,7 +19,7 @@ const Overlay = (props) => {
             </div>
             {/* <p className={textStyles.lgsize}>{props.children}</p> */}
             {/* <h2>{props.children}</h2> */}
-            <img src="../src/media/boomer-gif.gif" alt="Boomer Loading Animation" className={imageStyles.gif}></img>
+            <img src={boomergif} alt="Boomer Loading Animation" className={imageStyles.gif}></img>
             {/* <div className={imageStyles.loader}></div> */}
         </div>
     );
