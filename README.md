@@ -1,4 +1,4 @@
-# Quiz-as, Quiz-as, Quiz-as!
+# Boomer.ai
 
 ## Description
 
